@@ -1,0 +1,22 @@
+---
+kind: pipeline
+name: default
+
+steps:
+  - name: fmt
+    image: golang:1.11
+    commands:
+      - go fmt
+
+  - name: build-default-runtime
+    image: plugins/docker
+    settings:
+      repo: patrickjahns/nucleo-php-runtime
+      tags: latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+    when:
+      branch:
+        - master
