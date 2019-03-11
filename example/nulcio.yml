@@ -1,0 +1,8 @@
+apiVersion: "nuclio.io/v1"
+kind: NuclioFunction
+metadata:
+  name: php-example
+spec:
+  image: nuclio-php-example:latest
+  handler: main:Handler
+  runtime: golang

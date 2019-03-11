@@ -22,13 +22,10 @@ COPY --from=uhttpc /home/nuclio/bin/uhttpc /usr/local/bin/uhttpc
 HEALTHCHECK --interval=1s --timeout=3s CMD /usr/local/bin/uhttpc --url http://127.0.0.1:8082/ready || exit 1
 
 
-# add php src
-ADD test.php /var/task/src/test.php
 ADD php-fpm.conf /var/task
 
 # set script
 ENV PHP_FPM_BIN=/usr/local/sbin/php-fpm
-ENV PHP_SCRIPT=/var/task/src/test.php
 
 # ensure permissions are valid
 RUN chown -R www-data:www-data /var/task

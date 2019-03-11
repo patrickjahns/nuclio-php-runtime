@@ -28,7 +28,7 @@ The repository contains a example `Dockerfile` on how to utilize the handler.
 It can easily be deployed by building the docker image via:
 
 ```
-docker build -t nuclio-php-example:latest
+cd example && docker build -t nuclio-php-example:latest
 ```
 
 Once it is build, it can be deployed with the following nuclio configuration
@@ -47,6 +47,8 @@ spec:
 For more information on deploying functions via Dockerfiles please refer to the nuclio documentation:
 - https://nuclio.io/docs/latest/tasks/deploy-functions-from-dockerfile/
 - https://nuclio.io/docs/latest/tasks/deploying-pre-built-functions/
+
+There is also a [demo project](https://github.com/patrickjahns/nuclio-symfony) utilizing the symfony framework
 
 
 ### Other Projects
