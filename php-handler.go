@@ -82,9 +82,14 @@ func Handler(context *nuclio.Context, event nuclio.Event) (interface{}, error) {
 	}
 	defer resp.Body.Close()
 
+	contentType := resp.Header.Get("Content-Type")
+	if len(contentType) == 0 {
+	    contentType = "text/plain"
+	}
+
 	return nuclio.Response{
 		StatusCode:  resp.StatusCode,
-		ContentType: "application/text",
+		ContentType: contentType,
 		Body:        []byte(content),
 		Headers:     respHeaders,
 	}, nil
